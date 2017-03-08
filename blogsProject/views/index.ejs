@@ -1,11 +1,24 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include include/header%>
+
+<h1>最新博客</h1>
+<div class="container">
+    <ul class="modia-list">
+        <% articles.forEach(function(art){ %>
+            <li class="media">
+                <div class="media-left">
+                    <img src="<%=art.user.avatar%>" alt="" class="media-object">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading"><%= art.title%></h4>
+                    <p class="media-left"><%- art.content%></p>
+                </div>
+                <div class="media-bottom">
+                    作者：<%=art.user.username%>
+                    发表时间：<%=art.createTime.toLocaleString()%>
+                </div>
+            </li>
+        <% }) %>
+    </ul>
+</div>
+
+<% include include/footer%>

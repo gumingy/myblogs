@@ -1,0 +1,21 @@
+{
+  "name": "blogsProject",
+  "description": "我的博客",
+  "main": "",
+  "authors": [
+    "顾明意 <1213706177@qq.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/gumingy/myblogs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}
