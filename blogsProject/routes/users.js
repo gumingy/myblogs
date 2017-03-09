@@ -19,7 +19,6 @@ router.post('/login', function(req,res,next) {
     Model('User').findOne(user,function(err,u){
         // console.log(u);
         if(u){
-            console.log('1111111111111111111111111111111');
             req.session.user = u;
             req.flash('success','登录成功');
              return res.redirect('/');
@@ -49,7 +48,7 @@ router.post('/reg',function(req,res,next){
   //删除确认密码
     delete user.password2;
   user.password = md5(user.password); //对密码进行加密
-    user.avatar = "https://secure.gravatar.com/avatar/"+md5(user.email)+"?s=48"; //得到用户的头像
+    user.avatar = "https://secure.gravatar.com/avatar/"+md5(user.email)+"?s=80"; //得到用户的头像
     //保存到数据库中
     new Model('User')(user).save(function(err,user){
       if(err){
@@ -61,8 +60,6 @@ router.post('/reg',function(req,res,next){
       req.session.user = user;
       res.redirect('/');
     });
-
-
 });
 
 //注销用户登陆

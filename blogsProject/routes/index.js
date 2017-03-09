@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
         articles.forEach(function (article) {
             article.content = md.toHTML(article.content);
         });
-        res.render('index', {title: '主页',articles:articles});
+        res.render('index', {title:'主页',articles:articles});
     });
 });
 

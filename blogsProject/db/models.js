@@ -13,7 +13,8 @@ module.exports = {
     },
     Article:{
         user:{type:ObjectId,ref:'User'},
-        title:String,
+        title:{type:String,required:true},
+        content:{type:String,required:true},
         createTime:{type:Date,default:Date.now}
     }
 };
