@@ -20,7 +20,7 @@
     </div>
     <div class="navbar-collapse collapse" id="menus">
         <ul class="nav navbar-nav">
-            <% if(!user){%>
+            <% if(!user){ %>
                 <li><a href="/users/reg">注册</a></li>
                 <li><a href="/users/login">登录</a></li>
             <% }else{ %>
@@ -30,8 +30,15 @@
                         注销</a></li>
             <% } %>
 
-
         </ul>
+        <form action="/articles/list/1/2" class="navbar-form navbar-right" method="post" role="search">
+            <div class="form-group has-feedback">
+                <label for="keydown" class="sr-only">关键字</label>
+                <input class="form-control" type="search" name="keyword" id="keyword" value="<%=keyword%>" placeholder="请输入关键字" />
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+            <button type="sumbit" class="btn btn-default" value="search" name="searchBtn">搜索</button>
+        </form>
     </div>
 </nav>
 <div class="container text-center">

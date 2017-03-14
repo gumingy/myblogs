@@ -1,24 +1,42 @@
 <% include include/header%>
 
-<h1>最新博客</h1>
 <div class="container">
-    <ul class="modia-list">
-        <% articles.forEach(function(art){ %>
-            <li class="media">
-                <div class="media-left">
-                    <img src="<%=art.user.avatar%>" alt="" class="media-object">
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading"><a href="/articles/detail/<%=art._id%>"><%= art.title%></a></h4>
-                    <p class="media-left"><%- art.content%></p>
-                </div>
-                <div class="media-bottom">
-                    作者：<%=art.user.username%>
-                    发表时间：<%=art.createTime.toLocaleString()%>
-                </div>
-            </li>
-        <% }) %>
-    </ul>
+    <div class="panel panel-default">
+        <div class="panel-heading"><h1>最新博客</h1></div>
+        <div class="panel-body">
+            <ul class="modia-list">
+                <% articles.forEach(function(art){ %>
+                <li class="media">
+                    <div class="media-left">
+                        <img src="<%=art.user.avatar%>" alt="" class="media-object">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="/articles/detail/<%=art._id%>"><%= art.title%></a></h4>
+                        <p class="media-left"><%- art.content%></p>
+                    </div>
+                    <div class="media-bottom">
+                        作者：<%=art.user.username%> &nbsp;
+                        发表时间：<%=art.createTime.toLocaleString()%>
+                    </div>
+                </li>
+                <% }) %>
+            </ul>
+
+        </div>
+    </div>
+
 </div>
+
+<nav>
+    <ul class="pagination">
+        <%
+        for(var i=1;i<=totalPage;i++){
+        %>
+        <li><a href="/articles/list/<%=i%>/<%=pageSize%>?keyword=<%=keyword%>"><%=i%></a></li>
+        <%
+        }
+        %>
+    </ul>
+</nav>
 
 <% include include/footer%>

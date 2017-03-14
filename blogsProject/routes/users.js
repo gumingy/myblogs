@@ -6,7 +6,8 @@ var middleware = require('../middleware/index');
 //访问登录页面
 router.get('/login', function(req, res, next) {
   console.log("打开登陆页面");
-  res.render('users/login',{title:'登录成功'});
+  var keyword = req.session.keyword;
+  res.render('users/login',{title:'登录成功',keyword:keyword});
 });
 
 //使用post提交登录信息
@@ -32,7 +33,8 @@ router.post('/login', function(req,res,next) {
 //访问注册页面
 router.get('/reg',middleware.checkNotLogin,function(req,res,next){
   console.log("打开注册页面");
-    res.render("users/reg",{title:'注册'});
+  var keyword = req.session.keyword;
+    res.render("users/reg",{title:'注册',keyword:keyword});
 });
 //提交注册信息
 router.post('/reg',function(req,res,next){
@@ -48,7 +50,7 @@ router.post('/reg',function(req,res,next){
   //删除确认密码
     delete user.password2;
   user.password = md5(user.password); //对密码进行加密
-    user.avatar = "https://secure.gravatar.com/avatar/"+md5(user.email)+"?s=80"; //得到用户的头像
+    user.avatar = "https://secure.gravatar.com/avatar/"+md5(user.email)+"?s=100"; //得到用户的头像
     //保存到数据库中
     new Model('User')(user).save(function(err,user){
       if(err){

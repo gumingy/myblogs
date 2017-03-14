@@ -1,0 +1,22 @@
+<% include ../include/header%>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <%=art.title%>
+        </div>
+        <div class="panel-body">
+            <%-art.content%>
+        </div>
+        <% if(user && user._id == art.user){ %>
+
+            <div class="panel-footer">
+                <a class="btn btn-warning" href="/articles/edit/<%=art._id%>">编辑</a>
+                <a class="btn btn-danger" href="/articles/delete/<%=art._id%>">删除</a>
+            </div>
+
+        <% } %>
+    </div>
+</div>
+
+<% include ../include/footer%>
